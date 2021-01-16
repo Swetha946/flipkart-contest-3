@@ -1,23 +1,32 @@
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+1.Next Permutation :
+class Solution 
+{ 
+    void nextPermutation(int perm[], int N)
+	{    
+	    // code here
+        if(perm == null || N <= 1)
+            return;
+        int i = N-2;
+        while(i >=0 && perm[i]>=perm[i+1])
+            i--;
+        if(i>=0)
+        {
+            int j = N-1;
+            while(perm[j]<=perm[i])
+                j--;
+            swap(perm,i,j);
+        }
+        reverse(perm,i+1,N-1);
+	}
+	public void swap(int perm[], int i, int j)
+	{
+	    int temp = perm[i];
+	    perm[i] = perm[j];
+	    perm[j] = temp;
+	}
+	public void reverse(int perm[], int i, int j)
+	{
+	    while(i<j)
+	        swap(perm,i++,j--);
+	}
+} 
